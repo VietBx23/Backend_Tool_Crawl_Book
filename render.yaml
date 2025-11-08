@@ -2,8 +2,8 @@ services:
   - type: web
     name: tadu-crawler-api
     runtime: python
-    buildCommand: "pip install -r requirements.txt && playwright install chromium"
-    startCommand: "python app.py"
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "playwright install chromium && python app.py"
     plan: free
     autoDeploy: true
     envVars:
