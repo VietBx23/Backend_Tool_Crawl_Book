@@ -7,7 +7,9 @@ import re
 from playwright.sync_api import sync_playwright
 from flask import Flask, request, jsonify
 import os
-
+import sys
+print("Python version:", sys.version)
+print("App starting...")
 # ---------------- CONFIG ----------------
 BASE_STORE_URL = "https://www.tadu.com/store/98-a-0-15-a-20-p-{page}-909"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; TaduIDBot/1.0)"}
@@ -203,4 +205,8 @@ def crawl_api():
     return jsonify({"results": results, "errors": errors})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    try:
+        app.run(host="0.0.0.0", port=5000)
+    except Exception as e:
+        print("App failed to start:", e)
+
